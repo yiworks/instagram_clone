@@ -1,4 +1,8 @@
 <li>
   <%= image_tag 'avatar_thumb.png', alt: user.name, class: "avatar" %>
   <%= link_to user.name, user %>
+  <% if current_user.admin? && !current_user?(user) %>
+    | <%= link_to "delete", user, method: :delete,
+                      data: { confirm: "You sure?" } %>
+  <% end %>
 </li>

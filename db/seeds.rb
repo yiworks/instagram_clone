@@ -3,7 +3,8 @@ Faker::Config.locale = :ja
 User.create!(name: "John Doe",
             email: "johndoe@example.com",
             password: "foobar",
-            password_confirmation: "foobar")
+            password_confirmation: "foobar",
+            admin: true)
 
 100.times do |n|
   name = Faker::Pokemon.name

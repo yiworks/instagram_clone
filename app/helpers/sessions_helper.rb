@@ -7,6 +7,7 @@ module SessionsHelper
 
   # 永続セッション
   def remember(user)
+    # TODO: user.remember の意味がわかっていない
     user.remember
     cookies.permanent.signed[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
@@ -34,6 +35,7 @@ module SessionsHelper
   end
 
   def forget(user)
+    # TODO: user.forget の意味がわかっていない
     user.forget
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
