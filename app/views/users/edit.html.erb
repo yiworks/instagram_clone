@@ -1,11 +1,11 @@
 <% provide(:title, "Edit user") %>
-<% provide(:button_text, 'Save changes') %>
+<% provide(:button_text, '変更を保存する') %>
 
 <h1>Update your profile</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= render 'form' %>
+    <%= render 'shared/login_form' %>
 
     <div class="avatar_edit">
       <%= image_tag 'avatar.png', alt: @user.name, class: "avatar" %>
