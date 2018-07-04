@@ -7,27 +7,42 @@
   list-style: none;
   padding: 0;
   li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    background-color: #ffffff;
+    padding: 0px;
+    border: 1px solid #e8e8e8;
+    margin-bottom: 20px;
+  }
+  .post-header {
+    height: 50px;
+    padding: 15px 10px;
   }
   .user {
     margin-top: 5em;
     padding-top: 0;
   }
+  .content-photo img {
+    width: 100%;
+  }
+  .content-text {
+    padding: 15px 10px;
+  }
   .content {
     display: block;
+    margin-top: 50px;
     margin-left: 60px;
     img {
       display: block;
       padding: 5px 0;
+      margin-bottom: 20px;
     }
   }
   .timestamp {
     color: $gray-light;
     display: block;
-    marign-left: 60px;
+    margin-top: 20px;
+    padding-left: 10px;
   }
-  .avater {
+  .avatar {
     float: left;
     margin-right: 10px;
     margin-top: 5px;

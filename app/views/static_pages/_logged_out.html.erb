@@ -1,15 +1,18 @@
+<% provide(:button_text, '登録する') %>
 <div class="row">
-  <div class="col-md-10 col-md-offset-2">
-    <div class="col-md-5 hidden-xs">
-      <%= image_tag 'image_iPhoneX.png', alt: 'app_image', class: 'app-image' %>
-    </div>
-    <div class="col-md-5 container-signin">
+
+  <div class="col-sm-4 col-sm-offset-2 hidden-xs">
+    <%= image_tag 'image_iPhoneX.png', alt: 'app_image', class: 'app-image' %>
+  </div>
+  <div class="col-sm-5">
+    <div class="container-signin">
       <h2>instagram clone</h2>
-      <%= render 'shared/login_form' %>
+      <%= render 'shared/user_form' %>
     </div>
-    <div class="col-md-offset-5 col-md-5 container-login">
+    <div class="container-login">
       <span>アカウントをお持ちですか？</span>
       <%= link_to "ログイン", login_path %>
     </div>
   </div>
+
 </div>

@@ -6,6 +6,10 @@ class StaticPagesController < ApplicationController
     else
       @user = User.new
     end
+
+    if params[:back]
+      params.require(:post).permit(:content, :photo_cache)
+    end
   end
 
   def help
