@@ -1,17 +1,24 @@
-<div>
-  <h2>以下の内容で送信します。</h2>
-  <%= form_with(model: @post, url: posts_path, local: true) do |f| %>
-    <%= f.hidden_field :photo_cache %>
-    <%= f.hidden_field :content %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h2 class="new-post-title">以下の内容で送信します。</h2>
+    <%= form_with(model: @post, url: posts_path, local: true) do |f| %>
+      <%= f.hidden_field :photo_cache %>
+      <%= f.hidden_field :content %>
 
-    <%= image_tag @post.photo %>
-    <%= @post.content %>
-    <%= f.submit "投稿する", class: "btn btn-primary" %>
-  <% end %>
+      <div class="confirm-content-photo">
+        <%= image_tag @post.photo %>
+      </div>
+      <h3>Comment</h3>
+      <div class="confirm-content-text">
+        <%= @post.content %>
+      </div>
+      <%= f.submit "投稿する", class: "btn btn-primary" %>
+    <% end %>
 
-  <%= form_with(model: @post, url: root_path, local: true, method: "get") do |f| %>
-    <%= f.hidden_field :photo_cache %>
-    <%= f.hidden_field :content %>
-    <%= f.submit "戻る", name: 'back', class: "btn" %>
-  <% end %>
+    <%= form_with(model: @post, url: new_post_path, local: true, method: "get") do |f| %>
+      <%= f.hidden_field :photo_cache %>
+      <%= f.hidden_field :content %>
+      <%= f.submit "戻る", name: 'back', class: "btn" %>
+    <% end %>
+  </div>
 </div>
