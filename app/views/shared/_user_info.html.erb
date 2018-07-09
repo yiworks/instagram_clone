@@ -1,4 +1,8 @@
-<%= image_tag 'avatar_thumb.png', alt: current_user.name, class: "avatar" %>
+<% if current_user.avatar.present? %>
+  <%= image_tag current_user.avatar.thumb.url, alt: current_user.name, class: "avatar" %>
+<% else %>
+  <%= image_tag 'avatar_thumb.png', alt: user.name, class: "avatar" %>
+<% end %>
 <h1><%= current_user.name %></h1>
-<span><%= link_to "view my profile", current_user %></span>
+<span><%= link_to "プロフィールを表示", current_user %></span>
 <span><%= pluralize(current_user.posts.count, "post") %></span>

@@ -18,7 +18,8 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = "Post created!"
+      PostMailer.post_mail(@post).deliver
+      flash[:success] = "投稿しました！"
       redirect_to root_url
     else
       @feed_items = current_user.feed.paginate(page: params[:page])

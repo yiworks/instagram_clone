@@ -1,7 +1,10 @@
 <li id="post-<%= post.id %>">
   <div class="post-header">
-    <%= image_tag 'avatar_thumb.png', alt: post.user.name, class: "avatar" %>
-    <span class="user"><%= link_to post.user.name, post.user %></span><br>
+    <% if post.user.avatar.present? %>
+      <%= image_tag post.user.avatar.thumb.url ,alt: post.user.name, class: "avatar" %>
+    <% else %>
+      <%= image_tag 'avatar_thumb.png', alt: post.user.name, class: "avatar" %>
+    <% end %>
     <span class="user"><%= link_to post.user.name, post.user %></span>
   </div>
   <div class="content-photo">

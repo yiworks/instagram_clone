@@ -3,7 +3,11 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= image_tag 'avatar.png', alt: @user.name, class: "avatar" %>
+        <% if @user.avatar.present? %>
+          <%= image_tag @user.avatar.thumb.url, alt: @user.name, class: "avatar" %>
+        <% else %>
+          <%= image_tag 'avatar_thumb.png', alt: @user.name, class: "avatar" %>
+        <% end %>
         <%= @user.name %>
       </h1>
     </section>

@@ -5,6 +5,11 @@
   <%= f.email_field :email, class: 'form-control', placeholder: 'メールアドレス' %>
   <%= f.password_field :password, class: 'form-control', placeholder: 'パスワード' %>
   <%= f.password_field :password_confirmation, class: 'form-control', placeholder:'パスワード（再入力）' %>
+  <% unless action_name == 'home' %>
+    <p>ユーザー画像</p>
+    <%= image_tag @user.avatar.url if @user.avatar.present? %>
+    <%= f.file_field :avatar, class: 'avatar' %>
+  <% end %>
 
   <%= f.submit yield(:button_text), class: "btn btn-lg btn-primary btn-block btn-signin" %>
 <% end %>

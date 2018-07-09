@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   attr_accessor :remember_token
 
+  mount_uploader :avatar, AvatarUploader
+
   before_save { email.downcase! }
 
   validates :name, presence: true, length: { maximum: 50 }
