@@ -40,7 +40,7 @@
   .post-header {
     height: 60px;
     padding: 15px 10px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
   }
   .user {
     margin-top: 5em;
@@ -67,7 +67,7 @@
     color: $gray-light;
     display: block;
     margin-top: 20px;
-    padding-left: 10px;
+    padding-left: 15px;
   }
   .avatar {
     float: left;
@@ -88,4 +88,10 @@ span.picture {
   input {
     border: 0;
   }
+}
+
+.like-button {
+  background: none;
+  border: none;
+  margin-left: 12px;
 }

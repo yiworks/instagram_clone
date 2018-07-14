@@ -14,13 +14,21 @@
     <% if post.likes.pluck(:user_id).include?(current_user.id) %> <!-- n+1回避 -->
       <!-- ここから要リファクタリング -->
       <% like_id = post.likes.find_by(user_id: current_user.id).id %>
-      <%= link_to 'いいね解除', post_like_path(id: like_id, post_id: post.id), method: :delete %>
+      <%= button_to post_like_path(id: like_id, post_id: post.id), method: :delete,
+                                  class: "like-button", remote: true do %>
+        <%= image_tag("heart_on.svg", width: 20, height: 20) %>
+        <span><%= post.likes_count %></span>
+      <% end %>
       <!-- ここまで要リファクタリング -->
     <% else %>
-      <%= link_to 'いいね！', post_likes_path(post_id: post.id), method: :post %>
+      <%= button_to post_likes_path(post_id: post.id), method: :post,
+                                  class: "like-button", remote: true do %>
+        <%= image_tag("heart_off.svg", width: 20, height: 20) %>
+        <span><%= post.likes_count %></span>
+      <% end %>
     <% end %>
 
-    <%= post.likes_count %>
+
 
   </div>
   <div class="content-text">
