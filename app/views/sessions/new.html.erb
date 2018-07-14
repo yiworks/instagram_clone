@@ -1,4 +1,4 @@
-<% provide(:title, "Log in") %>
+<% provide(:title, "ログイン") %>
 <h1>Log in</h1>
 
 <div class="row">
@@ -13,12 +13,13 @@
 
       <%= f.label :remember_me, class: "checkbox inline" do %>
         <%= f.check_box :remember_me, id: "session_remember_me" %>
-        <span>Remember me on this computer</span>
+        <span>ログイン情報を記憶する</span>
       <% end %>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <%= f.submit "ログイン", class: "btn btn-primary" %>
     <% end %>
+    <br>
 
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+    <p>ユーザー登録は <%= link_to "こちら", signup_path %></p>
   </div>
 </div>

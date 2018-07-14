@@ -10,6 +10,19 @@
   <div class="content-photo">
     <%= image_tag post.photo.url if post.photo? %>
   </div>
+  <div class="content-like">
+    <% if post.likes.pluck(:user_id).include?(current_user.id) %> <!-- n+1回避 -->
+      <!-- ここから要リファクタリング -->
+      <% like_id = post.likes.find_by(user_id: current_user.id).id %>
+      <%= link_to 'いいね解除', post_like_path(id: like_id, post_id: post.id), method: :delete %>
+      <!-- ここまで要リファクタリング -->
+    <% else %>
+      <%= link_to 'いいね！', post_likes_path(post_id: post.id), method: :post %>
+    <% end %>
+
+    <%= post.likes_count %>
+
+  </div>
   <div class="content-text">
     <%= post.content %>
   </div>
