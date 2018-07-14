@@ -11,25 +11,7 @@
     <%= image_tag post.photo.url if post.photo? %>
   </div>
   <div class="content-like">
-    <% if post.likes.pluck(:user_id).include?(current_user.id) %> <!-- n+1回避 -->
-      <!-- ここから要リファクタリング -->
-      <% like_id = post.likes.find_by(user_id: current_user.id).id %>
-      <%= button_to post_like_path(id: like_id, post_id: post.id), method: :delete,
-                                  class: "like-button", remote: true do %>
-        <%= image_tag("heart_on.svg", width: 20, height: 20) %>
-        <span><%= post.likes_count %></span>
-      <% end %>
-      <!-- ここまで要リファクタリング -->
-    <% else %>
-      <%= button_to post_likes_path(post_id: post.id), method: :post,
-                                  class: "like-button", remote: true do %>
-        <%= image_tag("heart_off.svg", width: 20, height: 20) %>
-        <span><%= post.likes_count %></span>
-      <% end %>
-    <% end %>
-
-
-
+    <%= render 'posts/like', post: post %>
   </div>
   <div class="content-text">
     <%= post.content %>
