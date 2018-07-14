@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+
+  # TODO likesをユニークにする
   def create
     current_user.likes.create(post_id: params[:post_id])
     redirect_to request.referrer || root_url
