@@ -1,0 +1,28 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <% if @user.avatar.present? %>
+          <%= image_tag @user.avatar.thumb.url, alt: @user.name, class: "avatar" %>
+        <% else %>
+          <%= image_tag 'avatar_thumb.png', alt: @user.name, class: "avatar" %>
+        <% end %>
+        <%= @user.name %>
+      </h1>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+    <%= render 'follow_form' if logged_in? %>
+  </aside>
+  <div class="col-md-8">
+    <% if @user.like_posts.any? %>
+      <h3>Posts (<%= @user.like_posts.count %>)</h3>
+      <ol class="posts">
+        <%= render @likes %>
+      </ol>
+      <%= will_paginate @likes %>
+    <% end %>
+  </div>
+</div>
