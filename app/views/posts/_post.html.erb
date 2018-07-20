@@ -10,9 +10,11 @@
   <div class="content-photo">
     <%= image_tag post.photo.url if post.photo? %>
   </div>
-  <div class="content-like">
-    <%= render 'posts/like', post: post %>
-  </div>
+  <% if post.user != current_user %>
+    <div id="content-like-<%= post.id %>">
+      <%= render 'posts/like', post: post %>
+    </div>
+  <% end %>
   <div class="content-text">
     <%= post.content %>
   </div>

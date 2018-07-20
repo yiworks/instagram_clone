@@ -2,22 +2,18 @@ class LikesController < ApplicationController
 
   # TODO likesをユニークにする
   def create
-    current_user.likes.create(post_id: params[:post_id])
-    redirect_to request.referrer || root_url
-    # TODO ajax化したい
-    # respond_to do |format|
-    #   format.html { redirect_to request.referrer || root_url }
-    #   format.js
-    # end
+    post_user_id = Post.find(params[:post_id]).user_id
+    if post_user_id != current_user.id
+      current_user.likes.create(post_id: params[:post_id])
+      @post = Post.find(params[:post_id])
+    end
   end
 
   def destroy
-    current_user.likes.find_by(post_id: params[:post_id]).destroy
-    redirect_to request.referrer || root_url
-    # TODO ajax化したい
-    # respond_to do |format|
-    #   format.html { redirect_to request.referrer || root_url }
-    #   format.js
-    # end
+    post_user_id = Post.find(params[:post_id]).user_id
+    if post_user_id != current_user.id
+      current_user.likes.find_by(post_id: params[:post_id]).destroy
+      @post = Post.find(params[:post_id])
+    end
   end
 end
