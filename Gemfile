@@ -25,6 +25,7 @@ gem 'carrierwave', '1.2.2'
 gem 'mini_magick', '4.7.0'
 gem 'fog', '1.42'
 gem 'letter_opener_web'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
